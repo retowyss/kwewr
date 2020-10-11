@@ -77,19 +77,48 @@
 <div id="installation" class="section level2">
 <h2 class="hasAnchor">
 <a href="#installation" class="anchor"></a>Installation</h2>
-<div class="sourceCode" id="cb1"><pre class="downlit">
-<span class="fu">remotes</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html">install_github</a></span><span class="op">(</span><span class="st">"retowyss/kwewr"</span><span class="op">)</span>
-<span class="co"># or</span>
-<span class="co"># devtools::install_github("retowyss/kwewr")</span></pre></div>
+<div class="sourceCode" id="cb1"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">"retowyss/kwewr"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a><span class="co"># or</span></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="co"># devtools::install_github("retowyss/kwewr")</span></span></code></pre></div>
 <p>You need to have your own API key. By default, kwewr will look for your key in <code>config.yml</code> realtive to your working directory.</p>
-<pre><code>default:
-  key: "&lt; API KEY &gt;"</code></pre>
+<div class="sourceCode" id="cb2"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1"></a>default<span class="op">:</span></span>
+<span id="cb2-2"><a href="#cb2-2"></a><span class="st">  </span>key<span class="op">:</span><span class="st"> "&lt; API KEY &gt;"</span></span></code></pre></div>
 </div>
 <div id="example" class="section level2">
 <h2 class="hasAnchor">
 <a href="#example" class="anchor"></a>Example</h2>
-<div class="sourceCode" id="cb3"><pre class="downlit">
-<span class="fu"><a href="reference/get_keyword_data.html">get_keyword_data</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/c.html">c</a></span><span class="op">(</span><span class="st">"best pen for cooking"</span>, <span class="st">"best oven for hamsters"</span><span class="op">)</span><span class="op">)</span></pre></div>
+<p>In this example I request data for the five keywords: cat, dog, Amazon, Google, and Youtube.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode R"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">library</span>(kwewr)</span>
+<span id="cb3-2"><a href="#cb3-2"></a>kws &lt;-<span class="st"> </span><span class="kw">get_keyword_data</span>(<span class="kw">c</span>(</span>
+<span id="cb3-3"><a href="#cb3-3"></a>  <span class="st">"Cat"</span>, </span>
+<span id="cb3-4"><a href="#cb3-4"></a>  <span class="st">"Dog"</span>,</span>
+<span id="cb3-5"><a href="#cb3-5"></a>  <span class="st">"Amazon"</span>,</span>
+<span id="cb3-6"><a href="#cb3-6"></a>  <span class="st">"Google"</span>,</span>
+<span id="cb3-7"><a href="#cb3-7"></a>  <span class="st">"Youtube"</span></span>
+<span id="cb3-8"><a href="#cb3-8"></a>))</span>
+<span id="cb3-9"><a href="#cb3-9"></a><span class="kw">str</span>(kws, <span class="dt">max.level =</span> <span class="dv">2</span>)</span>
+<span id="cb3-10"><a href="#cb3-10"></a></span>
+<span id="cb3-11"><a href="#cb3-11"></a><span class="co">## List of 4</span></span>
+<span id="cb3-12"><a href="#cb3-12"></a><span class="co">##  $ data      :'data.frame':  5 obs. of  5 variables:</span></span>
+<span id="cb3-13"><a href="#cb3-13"></a><span class="co">##   ..$ vol        : int [1:5] 7480000 6120000 414000000 618000000 1380000000</span></span>
+<span id="cb3-14"><a href="#cb3-14"></a><span class="co">##   ..$ cpc        :'data.frame':  5 obs. of  2 variables:</span></span>
+<span id="cb3-15"><a href="#cb3-15"></a><span class="co">##   ..$ keyword    : chr [1:5] "cat" "dog" "amazon" "google" ...</span></span>
+<span id="cb3-16"><a href="#cb3-16"></a><span class="co">##   ..$ competition: num [1:5] 0.13 0.14 0.13 0.01 0.01</span></span>
+<span id="cb3-17"><a href="#cb3-17"></a><span class="co">##   ..$ trend      :List of 5</span></span>
+<span id="cb3-18"><a href="#cb3-18"></a><span class="co">##  $ credits   : int 87749</span></span>
+<span id="cb3-19"><a href="#cb3-19"></a><span class="co">##  $ time      : num 0.02</span></span>
+<span id="cb3-20"><a href="#cb3-20"></a><span class="co">##  $ time_stamp: POSIXct[1:1], format: "2020-10-11 06:49:25"</span></span>
+<span id="cb3-21"><a href="#cb3-21"></a></span>
+<span id="cb3-22"><a href="#cb3-22"></a>tibble<span class="op">::</span><span class="kw">as_tibble</span>(kws<span class="op">$</span>data)</span>
+<span id="cb3-23"><a href="#cb3-23"></a></span>
+<span id="cb3-24"><a href="#cb3-24"></a><span class="co">## # A tibble: 5 x 5</span></span>
+<span id="cb3-25"><a href="#cb3-25"></a><span class="co">##          vol cpc$currency $value keyword competition trend            </span></span>
+<span id="cb3-26"><a href="#cb3-26"></a><span class="co">##        &lt;int&gt; &lt;chr&gt;        &lt;chr&gt;  &lt;chr&gt;         &lt;dbl&gt; &lt;list&gt;           </span></span>
+<span id="cb3-27"><a href="#cb3-27"></a><span class="co">## 1    7480000 $            0.18   cat            0.13 &lt;df[,3] [12 x 3]&gt;</span></span>
+<span id="cb3-28"><a href="#cb3-28"></a><span class="co">## 2    6120000 $            0.84   dog            0.14 &lt;df[,3] [12 x 3]&gt;</span></span>
+<span id="cb3-29"><a href="#cb3-29"></a><span class="co">## 3  414000000 $            0.02   amazon         0.13 &lt;df[,3] [12 x 3]&gt;</span></span>
+<span id="cb3-30"><a href="#cb3-30"></a><span class="co">## 4  618000000 $            0.31   google         0.01 &lt;df[,3] [12 x 3]&gt;</span></span>
+<span id="cb3-31"><a href="#cb3-31"></a><span class="co">## 5 1380000000 $            0.06   youtube        0.01 &lt;df[,3] [12 x 3]&gt;</span></span></code></pre></div>
 </div>
 </div>
   </div>

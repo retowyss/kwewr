@@ -25,13 +25,17 @@ get_keyword_data <- function(keywords = c(),
                              parse_response = TRUE) {
   stopifnot(length(keywords) > 0 & length(keywords) <= 100)
   endpoint <- "https://api.keywordseverywhere.com/v1/get_keyword_data"
-  response <- POST(url = endpoint,
-    body = list(
+  # Have to build list containing multiple items named "kw[]"
+  query <- c(
+    list(
       country = country,
       currency = currency,
-      dataSource = data_source,
-      "kw[]" = keywords
+      dataSource = data_source
     ),
+    do.call(c, args = lapply(keywords, function(kw) list("kw[]" = kw)))
+  )
+  response <- POST(url = endpoint,
+    body = query,
     kwew_headers(api_key),
     encode = "form"
   )
