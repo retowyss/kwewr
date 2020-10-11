@@ -4,8 +4,8 @@ kwewr - Keywords Everywhere API R client
 <!-- badges: start -->
 <!-- badges: end -->
 
-kwewr makes it easy to request keyword data from the Keywords Everywhere
-API.
+kwewr makes it easy to request keyword data from the [Keywords
+Everywhere](https://keywordseverywhere.com/) API.
 
 Installation
 ------------
@@ -43,9 +43,9 @@ Google, and Youtube.
     ##   ..$ keyword    : chr [1:5] "cat" "dog" "amazon" "google" ...
     ##   ..$ competition: num [1:5] 0.13 0.14 0.13 0.01 0.01
     ##   ..$ trend      :List of 5
-    ##  $ credits   : int 87749
-    ##  $ time      : num 0.02
-    ##  $ time_stamp: POSIXct[1:1], format: "2020-10-11 06:49:25"
+    ##  $ credits   : int 87711
+    ##  $ time      : num 0.01
+    ##  $ time_stamp: POSIXct[1:1], format: "2020-10-11 07:02:17"
 
     tibble::as_tibble(kws$data)
 

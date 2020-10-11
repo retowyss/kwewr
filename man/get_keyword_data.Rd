@@ -16,7 +16,7 @@ get_keyword_data(
 \arguments{
 \item{keywords}{Vector of keywords, has to be fewer than 100.}
 
-\item{country}{Counry code also see \link[kwewr]{get_countries}}
+\item{country}{Country code also see \link[kwewr]{get_countries}}
 
 \item{currency}{Currency code also see \link[kwewr]{get_currencies}}
 

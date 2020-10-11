@@ -4,7 +4,7 @@
 #'    For details consult [Keywords Everywhere API Docs](https://api.keywordseverywhere.com/docs/#/keywords/get_keywords_data)
 #'
 #' @param keywords Vector of keywords, has to be fewer than 100.
-#' @param country Counry code also see \link[kwewr]{get_countries}
+#' @param country Country code also see \link[kwewr]{get_countries}
 #' @param currency Currency code also see \link[kwewr]{get_currencies}
 #' @param data_source "gkp" or "cli", NULL will default to cli
 #' @inheritParams get_countries
