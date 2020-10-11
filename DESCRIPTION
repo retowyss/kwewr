@@ -1,0 +1,16 @@
+Package: kwewr
+Type: Package
+Title: R Keywords Everywhere API 
+Version: 0.1.0
+Authors@R: person("Reto", "Wyss", email = "reto.wyss.ch@gmail.com",
+                  role = c("aut", "cre"))
+Description: Simple interface for the Keywords Everywhere API.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+Imports: 
+    httr,
+    jsonlite
+Suggests: 
+    config
+RoxygenNote: 7.1.1

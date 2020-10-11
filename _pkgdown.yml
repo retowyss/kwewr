@@ -1,0 +1,10 @@
+url: http://retowyss.github.io/kwewr
+
+authors:
+  Reto Wyss:
+    href: https://reto.id
+
+template:
+  params:
+    bootswatch: paper
+    ganalytics: UA-105579105-3
